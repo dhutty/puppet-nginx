@@ -1,0 +1,29 @@
+server {
+  listen      <%= listen_ip %>:<%= @listen_port_real %><% if @default_server -%> default_server<% end -%>;
+<% if @force_ssl -%>
+  if ($ssl_protocol = "") {
+    rewrite ^ https://$server_name?$request_uri? permanent;
+  }
+<% end -%>
+  server_name <%= server_names.join(" ") %>;
+<% if  @www_root -%>
+  root <%= www_root %>;
+<% end -%>
+
+<% if @error_log -%>
+  error_log   <%= error_log %>;
+<% end -%>
+<% if @access_log -%>
+  access_log   <%= access_log %>;
+<% end -%>
+
+<% if @ssl -%>
+  ssl on;
+  ssl_certificate <%= ssl_cert %>;
+  ssl_certificate_key <%= ssl_key %>;
+  ssl_session_timeout 5m;
+
+  ssl_protocols SSLv3 TLSv1;
+  ssl_ciphers ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv3:+EXP;
+  ssl_prefer_server_ciphers on;
+<% end -%>

@@ -1,0 +1,4 @@
+  location <% if @match_type %><%= match_type %><% end -%> <%= location %> {
+    root <%= www_root %>;
+    index <% index_files.each do |index| %> <%= index %> <% end %>;
+  }
