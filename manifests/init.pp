@@ -1,3 +1,37 @@
+# Class: nginx
+#
+# This module manages NGINX.
+#
+# Parameters:
+#
+# There are no default parameters for this class. All module parameters are managed
+# via the nginx::params class
+#
+# Actions:
+#
+# Requires:
+#
+# Packaged NGINX
+# - RHEL: EPEL or custom package
+# - Debian/Ubuntu: Default Install or custom package
+#
+#
+# Sample Usage:
+#
+# The module works with sensible defaults:
+#
+# node default {
+# class {'nginx':}
+# }
+#
+# You can override various NGINX wide defaults like this:
+#
+# class {'nginx':
+#   nx_worker_processes => 2,
+#   nx_worker_connections => 2048,
+#   nx_client_max_body_size => '20m',
+# }
+
 class nginx (
   $nx_conf_dir = 'UNSET',
   $nx_worker_processes = 'UNSET',
@@ -113,9 +147,6 @@ class nginx (
     'UNSET' => $::nginx::params::nx_pid,
     default => $nx_pid,
   }
-
-
-
 
   $nx_daemon_user_real = $nx_daemon_user ? {
     'UNSET' => $::nginx::params::nx_daemon_user,

@@ -26,13 +26,13 @@
 #
 # Sample Usage:
 # nginx::resource::vhost { 'test2.example.com':
-#   ensure      => present,
+#   ensure       => present,
 #   server_names => ['test2.example.com','foo.example.com'],
-#   listen_port => 443,
-#   www_root    => '/var/www/nginx-default',
-#   ssl         => true,
-#   ssl_cert    => '/tmp/server.crt',
-#   ssl_key     => '/tmp/server.pem',
+#   listen_port  => 443,
+#   www_root     => '/var/www/nginx-default',
+#   ssl          => true,
+#   ssl_cert     => '/tmp/server.crt',
+#   ssl_key      => '/tmp/server.pem',
 # }
 define nginx::resource::vhost(
   $ensure = 'enable',
@@ -49,9 +49,9 @@ define nginx::resource::vhost(
   $access_log = false
 ) {
   File {
-    owner => 'root',
-    group => 'root',
-    mode => '0644',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0644',
     notify => Class['nginx::service']
   }
 
