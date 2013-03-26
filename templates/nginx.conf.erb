@@ -15,14 +15,14 @@ http {
 
   include <%= scope.lookupvar('nginx::nx_conf_dir_real') %>/mime.types;
   sendfile <%= scope.lookupvar('nginx::nx_sendfile_real') %>;
-<% if scope.lookupvar('nginx::nx_tcp_nopush_real' == 'on') -%>
+<% if scope.lookupvar('nginx::nx_tcp_nopush_real') == 'on' -%>
   tcp_nopush on;
 <% end -%>
 
   keepalive_timeout <%= scope.lookupvar('nginx::nx_keepalive_timeout_real')%>;
   tcp_nodelay <%= scope.lookupvar('nginx::nx_tcp_nodelay_real')%>;
 
-<% if scope.lookupvar('nginx::nx_gzip_real' == 'on') -%>
+<% if scope.lookupvar('nginx::nx_gzip_real') == 'on' -%>
   gzip on;
   gzip_disable "MSIE [1-6]\.(?!.*SV1)";
 <% end -%>
