@@ -20,7 +20,7 @@
 class nginx::service {
   Exec['compile-nginx-config'] -> Service['nginx']
   exec { 'compile-nginx-config':
-    command     => "cat ${nginx::nx_conf_dir_real}/conf.d/.frag* > ${nginx::nx_conf_dir_real}/conf.d/generated.conf",
+    command     => "/bin/cat ${nginx::nx_conf_dir_real}/conf.d/.frag* > ${nginx::nx_conf_dir_real}/conf.d/generated.conf",
     #onlyif => "",
     refreshonly => true,
   }
