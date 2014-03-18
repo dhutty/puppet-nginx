@@ -1,5 +1,5 @@
-  location <% if @match_type -%><%= match_type %><% end -%> <%= location %> {
-    proxy_pass <%= proxy %>;
+  location <% if @match_type -%><%= @match_type %><% end -%> <%= location %> {
+    proxy_pass <%= @proxy %>;
 <% if @proxy_redirect -%>
     proxy_redirect <%= proxy_redirect %>;
 <% end -%>
@@ -13,7 +13,7 @@
     proxy_read_timeout <%= proxy_read_timeout %>;
 <% end -%>
 
-<% proxy_set_headers.sort.map do  |header,var|  -%>
+<% @proxy_set_headers.sort.map do  |header,var|  -%>
     proxy_set_header <%= header %> <%= var %>;
 <% end -%>
 
