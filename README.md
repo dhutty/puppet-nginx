@@ -60,7 +60,7 @@ which allows this kind of syntax to override:
       nx_client_max_body_size => '20m',
     }
 
-* The implementation of ssl configurations is differen; SSL is only done at the server {...} context level, locations do not (need to) know whether they are ssl or not.
+* The implementation of ssl configurations is different; SSL is only done at the server {...} context level, locations do not (need to) know whether they are ssl or not.
 * The `force_ssl` flag can be used to include a directive that rewrites all requests to the equivalent request but with the https scheme.
 * There is more flexibility with proxy settings, these are now easier to override on a per server/location basis.
 * I think I have defeated a bug where changing the manifest would not necessarily result in an update to the nginx config.

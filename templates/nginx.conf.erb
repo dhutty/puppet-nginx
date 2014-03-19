@@ -12,6 +12,7 @@ events {
 }
 
 http {
+  types_hash_max_size <%= scope.lookupvar('nginx::nx_types_hash_max_size_real') %>;
 
   include <%= scope.lookupvar('nginx::nx_conf_dir_real') %>/mime.types;
   sendfile <%= scope.lookupvar('nginx::nx_sendfile_real') %>;

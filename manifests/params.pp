@@ -18,6 +18,7 @@ class nginx::params {
   $nx_worker_processes = 1
   $nx_worker_connections = 1024
   $nx_multi_accept = off
+  $nx_types_hash_max_size = 1024
   $nx_sendfile = on
   $nx_keepalive_timeout = 65
   $nx_tcp_nodelay = off
