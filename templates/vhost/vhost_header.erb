@@ -2,7 +2,7 @@ server {
   listen      <%= @listen_ip %>:<%= @listen_port_real %><% if @default_server -%> default_server<% end -%>;
 <% if @force_ssl -%>
   if ($ssl_protocol = "") {
-    rewrite ^ https://$server_name?$request_uri? permanent;
+    rewrite ^ https://$server_name$request_uri? permanent;
   }
 <% end -%>
   server_name <%= @server_names.join(" ") %>;
